@@ -10,10 +10,13 @@ namespace SalesWebMVC.Models
     public class Seller
     {
         public int Id { get; set; }
+        [Required(ErrorMessage ="{0} required")]
+        [StringLength(60, MinimumLength =3, ErrorMessage ="{0} size should be from {1} to {2}")]
         public string Name { get; set; }
         public string Email { get; set; }
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString ="{0:F2}")]
+        [Range(100.9, 5000.0)]
         public double BaseSalary { get; set; }
         [Display(Name= "Birth Date")]
         [DataType(DataType.Date)]
